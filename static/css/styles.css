@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --deep-green: #1a4b4b;
+    --subdued-gold: #b8860b;
+    --background-dark: #0a192f;
+    --accent-muted: #2c3e50;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, var(--background-dark), var(--deep-green));
+    font-family: "Poppins", system-ui;
+    color: #e6f1ff;
+    line-height: 1.6;
+}
+
+
+.header {
+    text-align: center;
+    padding: 3rem 1rem;
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.logo {
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo:hover {
+    transform: scale(1.05) rotate(3deg);
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5));
+}
+
+h1 {
+    font-size: 3rem;
+    margin: 1rem 0;
+    color: var(--subdued-gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.typing-container {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 215, 0, 0.2);
+    box-shadow: 
+        0 15px 50px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(255, 215, 0, 0.1) inset;
+    margin: 2rem;
+    width: 90%;
+    max-width: 1000px;
+    backdrop-filter: blur(15px);
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1.2s ease-out;
+}
+
+.typing-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        transparent,
+        transparent 20px,
+        rgba(255, 215, 0, 0.05) 20px,
+        rgba(255, 215, 0, 0.05) 40px
+    );
+    animation: backgroundMove 10s linear infinite;
+    opacity: 0.3;
+}
+
+.iframe-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 2px solid var(--infest-gold);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.iframe-container:hover {
+    transform: scale(1.02);
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: linear-gradient(to right, #f5f7fa, #e9ecef);
+}
+
+.footer {
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 2px solid rgba(255, 215, 0, 0.2);
+}
+
+.footer p {
+    color: var(--infest-gold);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        max-width: 250px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+    }
+
+    .typing-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes backgroundMove {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+#mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 25, 47, 0.95);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+#mobile-overlay .message {
+    background: rgba(44, 62, 80, 0.8);
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 90%;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+}
+
+@media screen and (max-width: 768px) {
+    body > *:not(#mobile-overlay) {
+        display: none;
+    }
+
+    #mobile-overlay {
+        display: flex;
+    }
+}
